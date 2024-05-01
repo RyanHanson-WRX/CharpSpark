@@ -9,7 +9,7 @@ namespace ResuMeta_Tests;
 public class ResumeTemplateRepository_Tests
 {
     // private static readonly string _seedFile = @"..\..\..\Data\SeedResumes.sql";
-    private static readonly string _seedFile = @"../../../Data/SeedResumeTEmplates.sql";
+    private static readonly string _seedFile = @"../../../Data/SeedResumeTemplates.sql";
     private InMemoryDbHelper<ResuMetaDbContext> _dbHelper = new InMemoryDbHelper<ResuMetaDbContext>(_seedFile, DbPersistence.OneDbPerTest);
 
     [TestCase(5)]
