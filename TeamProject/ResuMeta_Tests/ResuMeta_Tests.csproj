@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\resuMeta\ResuMeta.csproj" />
+    <ProjectReference Include="..\ResuMeta\ResuMeta.csproj" />
   </ItemGroup>
 
   <ItemGroup>
