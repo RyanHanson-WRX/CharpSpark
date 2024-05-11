@@ -35,14 +35,39 @@ namespace ResuMeta.Controllers
                 return BadRequest();
             }
         }
+
          // POST: api/cgpt/improve/{id}
         [HttpPost("improve/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK), ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GenerateResume(int id)
+        public async Task<IActionResult> GenerateResume(int id, [FromBody] JsonElement jobDescription)
         {
             try
             {   
-                var response = await _chatGPTService.GenerateResume(id);
+                var response = await _chatGPTService.GenerateResume(id, jobDescription);
+
+                if (response == null || response.Response == null)
+                {
+                    return BadRequest();
+                }
+                
+                string responseData = response.Response.Trim('"');
+
+                return Content(responseData, "text/html");
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+         // POST: api/cgpt/improve-coverletter/{id}
+        [HttpPost("improve-coverletter/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK), ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GenerateCoverLetter(int id)
+        {
+            try
+            {   
+                var response = await _chatGPTService.GenerateCoverLetter(id);
 
                 if (response == null || response.Response == null)
                 {
